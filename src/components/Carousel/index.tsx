@@ -51,7 +51,7 @@ interface CarouselConfig {
 }
 
 interface CarouselProps {
-  children: React.ReactElement[]
+  children?: React.ReactElement[]
   itemsToShow?: number
   itemsToScroll?: number
   speed?: number
