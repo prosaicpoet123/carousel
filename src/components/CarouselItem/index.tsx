@@ -1,5 +1,3 @@
-import React from "react";
-
 export interface ItemProps {
   id: string
   image: string
@@ -14,7 +12,7 @@ const CarouselItem = (props: ItemProps) => {
       <img src={image} alt={title} />
       {/* <h2>{item.title}</h2> */}
     </div>
-  );
-};
+  )
+}
 
 export default CarouselItem
