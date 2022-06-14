@@ -1,0 +1,52 @@
+.ProductCarousel {
+  width: 100%;
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.CarouselList {
+  display: block;
+  transform: translate3d(0, 0, 0);
+  width: 100%;
+  touch-action: pan-y;
+}
+
+.CarouselUI {
+  width: 100%;
+  text-align: center;
+}
+
+.CarouselSlider {
+  overflow: hidden;
+  margin: 0 40px;
+  position: relative;
+}
+
+.CarouselTrack {
+  display: flex;
+  transform: translateZ(0);
+}
+img {
+  width: 100%;
+}
+
+.backBtn,
+.nextBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 101;
+}
+
+.backBtn {
+  left: 0;
+}
+
+.nextBtn {
+  right: 0;
+}
+
+.ProductCard {
+  padding: 8px;
+}
