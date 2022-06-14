@@ -1,9 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Carousel from "./components/Carousel/index";
 import CarouselItem, { ItemProps } from "./components/CarouselItem/index";
-
-import { createRoot } from 'react-dom/client';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const styles = require('./styles/styles.css')
@@ -34,12 +31,9 @@ export default class App extends React.Component {
         ]}
       >
         {list.map((item: ItemProps) => (
-          <CarouselItem {...item} />
+          <CarouselItem {...item} key={item.id} />
         ))}
       </Carousel>
     );
   }
 }
-const container = document.getElementById('root');
-const root = createRoot(container!);
-root.render(<App />);
