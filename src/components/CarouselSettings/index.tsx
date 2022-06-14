@@ -49,7 +49,7 @@ const CarouselSettings = () => {
           defaultValue="500"
           step="100"
           type="number"
-          name={InputFieldNames.ITEMS_TO_SCROLL}
+          name={InputFieldNames.CAROUSEL_SPEED}
           onChange={handleOnChange}
         />
       </fieldset>
