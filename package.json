@@ -45,5 +45,12 @@
       "pre-commit": "lint-staged",
       "pre-push": "yarn run test"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ]
   }
 }
