@@ -1,4 +1,4 @@
-import Carousel from '../../components/Carousel'
+import Carousel from '../../components/Carousel/Carousel'
 import CarouselItem, { ItemProps } from '../../components/CarouselItem'
 import useSettingsContext from '../../hooks/useSettingsContext/useSettingsContext'
 

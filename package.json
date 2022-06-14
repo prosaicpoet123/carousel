@@ -17,13 +17,17 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.17.12",
     "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^13.0.1",
     "prettier": "^2.7.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:watch": "react-scripts test",
+    "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject"
   },
   "browserslist": {
@@ -36,6 +40,19 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run test"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint",
+      "prettier --write",
+      "git add"
     ]
   }
 }

@@ -56,6 +56,8 @@ interface CarouselProps {
   itemsToScroll?: number
   speed?: number
   responsive?: ResponsiveConfig
+  onBack?: () => void
+  onNext?: () => void
 }
 
 const Carousel = ({
@@ -64,6 +66,8 @@ const Carousel = ({
   itemsToScroll = 1,
   speed = 500,
   responsive = [],
+  onBack,
+  onNext,
 }: CarouselProps) => {
   const [carousel, updateCarousel] = useState<CarouselConfig>({
     width: 150,
@@ -95,7 +99,8 @@ const Carousel = ({
         width /
         (responsiveData ? responsiveData.settings.itemsToShow : itemsToShow),
     })
-  }, [windowWidth, itemsToScroll, itemsToShow, responsive])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [windowWidth, itemsToScroll, itemsToShow])
 
   const handleOnClick = (direction: string) => {
     const { position, translate } = getNewPositions(direction, carousel)
@@ -110,17 +115,20 @@ const Carousel = ({
   if (!children || !children.length) return null
 
   return (
-    <div className="ProductCarousel">
-      <div className="CarouselList">
+    <div className="carousel">
+      <div className="carousel-list">
         <button
-          className="backBtn"
-          onClick={(e) => handleOnClick('back')}
+          className="back-btn"
+          onClick={() => {
+            handleOnClick('back')
+            onBack?.()
+          }}
           disabled={carousel.position === 0}>
           Back
         </button>
-        <div className="CarouselSlider" ref={list}>
+        <div className="carousel-slider" ref={list}>
           <div
-            className="CarouselTrack"
+            className="carousel-track"
             style={{
               width: `${children.length * carousel.width}px`,
               transform: `translate3d(${carousel.translate}px, 0px, 0px)`,
@@ -129,7 +137,7 @@ const Carousel = ({
             {children.map((child, i) => {
               return (
                 <div
-                  className="CarouselItem"
+                  className="carousel-item"
                   key={i}
                   style={{ width: `${carousel.width}px` }}>
                   {child}
@@ -139,8 +147,11 @@ const Carousel = ({
           </div>
         </div>
         <button
-          className="nextBtn"
-          onClick={(e) => handleOnClick('next')}
+          className="next-btn"
+          onClick={() => {
+            handleOnClick('next')
+            onNext?.()
+          }}
           disabled={
             carousel.position === children.length - carousel.itemsToShow
           }>
